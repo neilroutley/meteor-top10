@@ -38,5 +38,5 @@ This project is licensed under the MIT License - please see the [LICENSE](LICENS
 
 ## Authors
 
-[Neil Routley](https://github.com/neilroutley)
-[Guy Kachur](https://github.com/GuyKachur)
+-   [Neil Routley](https://github.com/neilroutley)
+-   [Guy Kachur](https://github.com/GuyKachur)
