@@ -1,4 +1,4 @@
-# Rank Ten
+# Rank King
 
 Web application for ranking different categories of items with other people
 
@@ -22,6 +22,7 @@ This webapp was built focusing on the following technologies:
 ```sh
 $ git clone git@github.com:neilroutley/meteor-top10.git
 $ cd meteor-top10
+$ meteor npm install
 $ meteor
 ```
 
