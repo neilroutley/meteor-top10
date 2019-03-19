@@ -27,9 +27,9 @@ $ meteor
 
 ## Links
 
--   [Website](https://lit-bayou-56425.herokuapp.com/)
--   [Demo Video](https://www.youtube.com/watch?v=FXrf8PMUsao&feature=youtu.be)
--   [Slides](https://docs.google.com/presentation/d/1-AEuXX15MnBrX2XakXUGyQSA-q80jrTdEvHsF9cax3M/edit?usp=sharing)
+-   [Website](https://rankten.herokuapp.com/)
+-   [Demo Video](https://www.youtube.com/)
+-   [Slides](https://docs.google.com/presentation/d/1FIyl5hDJr2BFKVWR2bKU2cvNU9EhH-yIltwPczKxBDU/edit?usp=sharing)
 -   [CS5610 Website](http://johnguerra.co/classes/webDevelopment_spring_2019/)
 
 ## License
