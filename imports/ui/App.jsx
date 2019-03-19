@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
-import Ranking from "./ranking.jsx";
+import Rank from "./Rank.jsx";
 import NavBar from "./NavBar.jsx";
 
 import { withTracker } from "meteor/react-meteor-data";
@@ -12,7 +12,7 @@ const HomeComponent = () => {
     <div>
       <h1>Top 10</h1>
 
-      {Meteor.user() ? <Ranking /> : <div>Please log in</div>}
+      {Meteor.user() ? <Rank /> : <div>Please log in</div>}
     </div>
   );
 };

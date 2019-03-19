@@ -68,38 +68,39 @@ class Rank extends Component {
   }
 
   render() {
-    return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {this.state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                    >
-                      {item.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    );
+    return <div>logged in - testing</div>;
+    // return (
+    //   <DragDropContext onDragEnd={this.onDragEnd}>
+    //     <Droppable droppableId="droppable">
+    //       {(provided, snapshot) => (
+    //         <div
+    //           {...provided.droppableProps}
+    //           ref={provided.innerRef}
+    //           style={getListStyle(snapshot.isDraggingOver)}
+    //         >
+    //           {this.state.items.map((item, index) => (
+    //             <Draggable key={item.id} draggableId={item.id} index={index}>
+    //               {(provided, snapshot) => (
+    //                 <div
+    //                   ref={provided.innerRef}
+    //                   {...provided.draggableProps}
+    //                   {...provided.dragHandleProps}
+    //                   style={getItemStyle(
+    //                     snapshot.isDragging,
+    //                     provided.draggableProps.style
+    //                   )}
+    //                 >
+    //                   {item.content}
+    //                 </div>
+    //               )}
+    //             </Draggable>
+    //           ))}
+    //           {provided.placeholder}
+    //         </div>
+    //       )}
+    //     </Droppable>
+    //   </DragDropContext>
+    // );
   }
 }
 
@@ -108,7 +109,7 @@ Rank.propTypes = {
 };
 
 export default withTracker(() => {
-  const handle = Meteor.subscribe("ranking");
+  const handle = Meteor.subscribe("Rankings");
   return {
     list: Ranking.find({}).fetch(),
     user: Meteor.user(),
