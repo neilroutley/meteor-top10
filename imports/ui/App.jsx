@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import MainTemplate from "./MainTemplate.jsx";
 import Rank from "./Rank.jsx";
+import CommentContainer from "./CommentContainer.jsx";
 
 import { withTracker } from "meteor/react-meteor-data";
 
@@ -40,6 +41,7 @@ class App extends Component {
             <Route exact path="/about" component={AboutComponent} />
             <Route component={NotFoundPage} />
           </Switch>
+          <CommentContainer />
         </MainTemplate>
       </Router>
     );
