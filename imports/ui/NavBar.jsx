@@ -44,6 +44,15 @@ export default class NavBar extends Component {
                   <NavLink
                     className="nav-link"
                     activeClassName="active"
+                    to="/create"
+                  >
+                    Create
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
                     to="/about"
                   >
                     About

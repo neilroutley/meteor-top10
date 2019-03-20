@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import MainTemplate from "./MainTemplate.jsx";
-import Rank from "./Rank.jsx";
-import CommentContainer from "./CommentContainer.jsx";
+import Submit from "./Submit.jsx";
+import RankContainer from "./RankContainer.jsx";
 
 import { withTracker } from "meteor/react-meteor-data";
 
@@ -12,7 +12,9 @@ const HomeComponent = () => {
   return (
     <div className="container text-center">
       <h1>Top 10</h1>
-      <div className="">{Meteor.user() ? <Rank /> : <p>Please log in</p>}</div>
+      <div className="">
+        {Meteor.user() ? <RankContainer /> : <p>Please log in</p>}
+      </div>
     </div>
   );
 };
@@ -48,6 +50,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomeComponent} />
             <Route exact path="/about" component={AboutComponent} />
+            <Route exact path="/create" component={Submit} />
             <Route component={NotFoundPage} />
           </Switch>
           <CommentContainer />

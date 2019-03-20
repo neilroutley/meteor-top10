@@ -12,7 +12,7 @@ class Foot extends Component {
               <p>Online Ranking King!</p>
             </div>
             <div className="col-lg-4 col-sm-6">
-              <h5>Books</h5>
+              <h5>Rankings</h5>
               <ul>
                 <li>
                   <Link to="/">Home</Link>
