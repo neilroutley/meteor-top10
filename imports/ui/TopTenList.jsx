@@ -35,8 +35,6 @@ class TopTenList extends Component {
       creator: props.ranking.creator,
       _id: props.ranking._id
     };
-    debugger;
-
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onSubmit = this.submitRanking.bind(this);
   }
@@ -169,11 +167,6 @@ class TopTenList extends Component {
 }
 
 TopTenList.propTypes = {
-  // createdAt: PropTypes.Date.isRequired,
-  // title: PropTypes.string.isRequired,
-  // list: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // comments: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // creator: PropTypes.object.isRequired,
   ranking: PropTypes.object.isRequired
 };
 

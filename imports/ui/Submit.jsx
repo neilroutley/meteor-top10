@@ -9,6 +9,7 @@ class Submit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //checks the list for duplicates
   hasDuplicates(a) {
     var counts = [];
     for (var i = 0; i <= a.length; i++) {
@@ -21,6 +22,7 @@ class Submit extends Component {
     return false;
   }
 
+  //converts list to the correct list
   convertList() {
     return {
       title: this.title.value,
@@ -38,6 +40,7 @@ class Submit extends Component {
       ]
     };
   }
+  //handles submit, checks array and then sends converted list to database
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.list);
@@ -58,7 +61,6 @@ class Submit extends Component {
       )
     ) {
       //array has hasDuplicates
-      //alert("Duplicates not allowed");
       console.log("duplicates not allowed");
       return;
     }
@@ -74,7 +76,6 @@ class Submit extends Component {
       }
 
       console.log("ranking updated", res);
-      //reset form
     });
   }
 

@@ -13,6 +13,7 @@ class RankContainer extends Component {
     };
   }
 
+  //render a rank container and add the top ten lists, based on each ranking avalible in the database,
   render() {
     return (
       <div className="row">
