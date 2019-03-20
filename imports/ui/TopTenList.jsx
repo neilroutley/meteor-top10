@@ -159,7 +159,9 @@ class TopTenList extends Component {
             )}
           </Droppable>
         </DragDropContext>
-        <button onClick={this.onSubmit}>Submit </button>
+        <button onClick={this.onSubmit} className="btn btn-primary">
+          Submit{" "}
+        </button>
         {}
       </div>
     );
