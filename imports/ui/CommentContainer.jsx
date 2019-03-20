@@ -50,20 +50,26 @@ class CommentContainer extends Component {
     console.log("Comments", this.props.comments);
     return (
       <div className="container">
-        <h2>Comments</h2>
-        <div className="comments">{this.renderComments()}</div>
-        <h3>Enter a comment</h3>
-        <label htmlFor="inComment">
-          Comment:{" "}
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Enter a comment"
-            value={this.state.comment}
-            onChange={this.onChange.bind(this)}
-            onKeyPress={this.onKey.bind(this)}
-          />
-        </label>
+        <div className="row">
+          <div className="col-4 pt-3 border-right">
+            <h2>Enter a comment</h2>
+            <label htmlFor="inComment">
+              Comment:{" "}
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Enter a comment"
+                value={this.state.comment}
+                onChange={this.onChange.bind(this)}
+                onKeyPress={this.onKey.bind(this)}
+              />
+            </label>
+          </div>
+          <div className="col-8 pt-3 bg-white">
+            <h3>Comments</h3>
+            <div className="comments">{this.renderComments()}</div>
+          </div>
+        </div>
       </div>
     );
   }
