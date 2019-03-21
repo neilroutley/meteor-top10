@@ -11,7 +11,7 @@ export default function CommentList(props) {
       </h5>
 
       {props.comments.length === 0 ? (
-        <div className="alert text-center alert-info">
+        <div className="alert text-center alert-info m-2">
           Be the first to comment
         </div>
       ) : null}
