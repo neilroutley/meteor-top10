@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import PropTypes from "prop-types";
 import { Meteor } from "meteor/meteor";
-import CommentList from "./CommentList.jsx";
-import CommentForm from "./CommentForm.jsx";
+import CommentSection from "./CommentSection.jsx";
 
 const grid = 8;
 
@@ -197,10 +196,7 @@ class TopTenList extends Component {
         <button onClick={this.onSubmit} className="btn btn-primary m-4">
           Submit{" "}
         </button>
-        <div className="commentBlock">
-          <CommentForm />
-          <CommentList comments={this.state.comments} />
-        </div>
+        <CommentSection _id={this.state._id} comments={this.state.comments} />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Meteor } from "meteor/meteor";
 
-export default class CommentForm extends Component {
+class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,24 +17,24 @@ export default class CommentForm extends Component {
     };
 
     // bind context to methods
-    this.handleFieldChange = this.handleFieldChange.bind(this);
+    //this.handleFieldChange = this.handleFieldChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  /**
-   * Handle form input field changes & update the state
-   */
-  handleFieldChange = event => {
-    const { value, owner } = event.target;
-
-    this.setState({
-      ...this.state,
-      comment: {
-        ...this.state.comment,
-        [owner]: value
-      }
-    });
-  };
+  // /**
+  //  * Handle form input field changes & update the state
+  //  */
+  // // handleFieldChange = event => {
+  // //   const { value, owner } = event.target;
+  // //
+  // //   this.setState({
+  // //     ...this.state,
+  // //     comment: {
+  // //       ...this.state.comment,
+  // //       [owner]: value
+  // //     }
+  // //   });
+  // // };
 
   /**
    * Form submit handler
@@ -41,6 +43,8 @@ export default class CommentForm extends Component {
     // prevent default form submission
     e.preventDefault();
 
+    //this.setState({ comment: { owner: Meteor.user().username } });
+
     if (!this.isFormValid()) {
       this.setState({ error: "All fields are required." });
       return;
@@ -48,10 +52,16 @@ export default class CommentForm extends Component {
 
     // loading status and clear error
     this.setState({ error: "", loading: true });
-
+    //servercomment
+    let serverComment = {
+      owner: Meteor.user().username,
+      body: this.body.value
+    };
+    console.log("server comment");
+    console.log(serverComment);
     Meteor.call(
-      "comments.insert",
-      { body: this.state.comment, _id: props.ranking._id },
+      "comments.update",
+      { comment: serverComment, _id: this.state._id },
       (err, res) => {
         if (err) {
           alert("There was error inserting check the console");
@@ -65,42 +75,14 @@ export default class CommentForm extends Component {
         });
       }
     );
-
-    // persist the comments on server
-    // let { comment } = this.state;
-    // fetch("http://localhost:7777", {
-    //   method: "post",
-    //   body: JSON.stringify(comment)
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     if (res.error) {
-    //       this.setState({ loading: false, error: res.error });
-    //     } else {
-    //       // add time return from api and push comment to parent state
-    //       comment.time = res.time;
-    //       this.props.addComment(comment);
-
-    //       // clear the message box
-    //       this.setState({
-    //         loading: false,
-    //         comment: { ...comment, body: "" }
-    //       });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     this.setState({
-    //       error: "Something went wrong while submitting form.",
-    //       loading: false
-    //     });
-    //   });
+    this.setState({ error: "", loading: false });
   }
 
   /**
    * Simple validation
    */
   isFormValid() {
-    return this.state.comment.owner !== "" && this.state.comment.body !== "";
+    return Meteor.user().username !== "" && this.body !== "";
   }
 
   renderError() {
@@ -114,13 +96,12 @@ export default class CommentForm extends Component {
       <React.Fragment>
         <form method="post" onSubmit={this.onSubmit}>
           <div className="form-group p-2">
-            <textarea
-              onChange={this.handleFieldChange}
-              value={this.state.comment.body}
+            <input
               className="form-control"
               placeholder="🤬 Your Comment"
               name="body"
               rows="5"
+              ref={input => (this.body = input)}
             />
           </div>
 
@@ -136,3 +117,8 @@ export default class CommentForm extends Component {
     );
   }
 }
+CommentForm.propTypes = {
+  _id: PropTypes.string.isRequired
+};
+
+export default CommentForm;

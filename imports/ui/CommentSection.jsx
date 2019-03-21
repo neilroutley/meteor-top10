@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import Comment from "./Comment.jsx";
 import PropTypes from "prop-types";
 
-class CommentList extends Component {
+import CommentList from "./CommentList.jsx";
+import CommentForm from "./CommentForm.jsx";
+
+class CommentSection extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      comments: props.comments
+      comments: this.props.comments,
+      _id: this.props._id
     };
   }
 
@@ -17,7 +21,6 @@ class CommentList extends Component {
       });
     }
   }
-
   compare(arr1, arr2) {
     if (!arr1 || !arr2) return;
 
@@ -40,29 +43,17 @@ class CommentList extends Component {
 
   render() {
     return (
-      <div className="commentList">
-        <h5 className="text-muted mb-4">
-          <span className="badge badge-success">
-            {this.state.comments.length}
-          </span>{" "}
-          Comment{this.state.comments.length > 0 ? "s" : ""}
-        </h5>
-
-        {this.state.comments.length === 0 ? (
-          <div className="alert text-center alert-info m-2">
-            Be the first to comment
-          </div>
-        ) : null}
-
-        {this.state.comments.map((comment, index) => (
-          <Comment key={index} body={comment.body} owner={comment.owner} />
-        ))}
+      <div className="commentBlock">
+        <CommentForm _id={this.state._id} />
+        <CommentList comments={this.state.comments} />
       </div>
     );
   }
 }
-CommentList.propTypes = {
+
+CommentSection.propTypes = {
+  _id: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default CommentList;
+export default CommentSection;

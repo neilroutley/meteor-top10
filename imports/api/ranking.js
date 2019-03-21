@@ -67,18 +67,20 @@ Meteor.methods({
 
 //Method to update, called by list being updated by community
 Meteor.methods({
-  "comments.update"(ranking) {
+  "comments.update"(userComment) {
     // Make sure the user is logged in before inserting a task
+    console.log("Adding usercomment");
+    console.log(userComment);
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
     } else {
       //user is logged in, sending an updated list, ^^
-      console.log("new comments update:");
-      console.log(ranking.comments);
+      // console.log("new comments update:");
+      // console.log(.comments);
       //Update the ranking with the new updated list
       Ranking.update(
-        { _id: ranking._id },
-        { $set: { comments: ranking.comments } }
+        { _id: userComment._id },
+        { $push: { comments: userComment.comment } }
       );
     }
   }
