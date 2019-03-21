@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import PropTypes from "prop-types";
 import { Meteor } from "meteor/meteor";
+import CommentList from "./CommentList.jsx";
+import CommentForm from "./CommentForm.jsx";
 
 const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: "none",
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+  padding: 0,
+  margin: 0,
+  // padding: grid * 2,
+  // margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
   background: isDragging ? "lightgreen" : "grey",
@@ -32,6 +36,7 @@ class TopTenList extends Component {
       title: props.ranking.title,
       list: props.ranking.list,
       comments: props.ranking.comments,
+      comment: "",
       creator: props.ranking.creator,
       _id: props.ranking._id
     };
@@ -44,7 +49,7 @@ class TopTenList extends Component {
 
     let result;
 
-    arr1.forEach((e1, i) =>
+    arr1.forEach(e1 =>
       arr2.forEach(e2 => {
         if (e1.length > 1 && e2.length) {
           result = this.compare(e1, e2);
@@ -94,8 +99,8 @@ class TopTenList extends Component {
   }
 
   renderComments() {
-    return this.state.ranking.comments.map(com => (
-      <div className="card" key={com._id}>
+    return this.state.comments.map(com => (
+      <div className="" key={com._id}>
         {com.owner} : {com.body}
       </div>
     ));
@@ -119,14 +124,40 @@ class TopTenList extends Component {
     this.setState({ list });
   }
 
+  onChange(evt) {
+    console.log("change", evt.target.value);
+    this.setState({
+      comment: evt.target.value
+    });
+  }
+
+  onKey(evt) {
+    if (evt.key === "Enter") {
+      this.setState({
+        comments: [
+          ...this.state.comments,
+          {
+            owner: Meteor.user().username,
+            body: this.state.comment,
+            createdAt: Date.now()
+          }
+        ]
+      });
+      console.log("comments should have" + this.state.comment);
+      console.log(this.state.comments);
+      this.setState({ comment: "" });
+    }
+  }
+
   render() {
     return (
-      <div className="col-2" key={this.state.title}>
+      <div className="" key={this.state.title}>
         <h1>{this.state.title}</h1>
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
             {(provided, snapshot) => (
               <div
+                className="media-body p-2 shadow-sm rounded bg-white border"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
@@ -139,6 +170,7 @@ class TopTenList extends Component {
                   >
                     {(provided, snapshot) => (
                       <div
+                        className="media-body p-2 shadow-sm rounded bg-light border"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
@@ -147,9 +179,12 @@ class TopTenList extends Component {
                           provided.draggableProps.style
                         )}
                       >
-                        {index + "    "}
-                        {(item.order = index)}
-                        {item.content}
+                        <div className="col-2 d-inline-block border p-0 bg-white">
+                          {(item.order = index)}
+                        </div>
+                        <div className="col-10 d-inline-block">
+                          {item.content}
+                        </div>
                       </div>
                     )}
                   </Draggable>
@@ -162,7 +197,10 @@ class TopTenList extends Component {
         <button onClick={this.onSubmit} className="btn btn-primary">
           Submit{" "}
         </button>
-        {}
+        <div className="commentBlock">
+          <CommentForm />
+          <CommentList comments={this.state.comments} />
+        </div>
       </div>
     );
   }

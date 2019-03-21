@@ -12,8 +12,17 @@ const HomeComponent = () => {
   return (
     <div className="container text-center">
       <h1>Top 10</h1>
+      {Meteor.user() ? <RankContainer /> : <p>Please log in</p>}
+    </div>
+  );
+};
+
+const CreateComponent = () => {
+  return (
+    <div className="container col-md-8 col-lg-6">
+      <h1>Create Ranking</h1>
       <div className="">
-        {Meteor.user() ? <RankContainer /> : <p>Please log in</p>}
+        {Meteor.user() ? <Submit /> : <p>Please log in</p>}
       </div>
     </div>
   );
@@ -50,10 +59,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomeComponent} />
             <Route exact path="/about" component={AboutComponent} />
-            <Route exact path="/create" component={Submit} />
+            <Route exact path="/create" component={CreateComponent} />
             <Route component={NotFoundPage} />
           </Switch>
-          <CommentContainer />
         </MainTemplate>
       </Router>
     );

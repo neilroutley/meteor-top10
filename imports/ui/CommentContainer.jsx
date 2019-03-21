@@ -14,10 +14,18 @@ class CommentContainer extends Component {
     };
   }
 
+  // renderComments() {
+  //   return this.state.comments.map(c => (
+  //     <div className="card" key={c._id}>
+  //       {c.owner} : {c.comment}
+  //     </div>
+  //   ));
+  // }
+
   renderComments() {
-    return this.props.comments.map(c => (
+    return this.props.ranking.comments.map(c => (
       <div className="card" key={c._id}>
-        {c.owner} : {c.comment}
+        {c.owner} : {c.body}
       </div>
     ));
   }
@@ -31,59 +39,58 @@ class CommentContainer extends Component {
 
   onKey(evt) {
     if (evt.key === "Enter") {
-      Meteor.call("comments.insert", this.state.comment, (err, res) => {
-        if (err) {
-          alert("There was error inserting check the console");
-          console.log(err);
-          return;
-        }
+      Meteor.call(
+        "comments.insert",
+        { body: this.state.comment, _id: props.ranking._id },
+        (err, res) => {
+          if (err) {
+            alert("There was error inserting check the console");
+            console.log(err);
+            return;
+          }
 
-        console.log("Comment inserted", res);
-        this.setState({
-          comment: ""
-        });
-      });
+          console.log("Comment inserted", res);
+          this.setState({
+            comment: ""
+          });
+        }
+      );
     }
   }
 
   render() {
-    console.log("Comments", this.props.comments);
+    console.log("Comments to render", this.props.ranking.comments);
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-4 pt-3 border-right">
-            <h2>Enter a comment</h2>
-            <label htmlFor="inComment">
-              Comment:{" "}
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Enter a comment"
-                value={this.state.comment}
-                onChange={this.onChange.bind(this)}
-                onKeyPress={this.onKey.bind(this)}
-              />
-            </label>
-          </div>
-          <div className="col-8 pt-3 bg-white">
-            <h3>Comments</h3>
-            <div className="comments">{this.renderComments()}</div>
-          </div>
-        </div>
+      <div className="row">
+        <h2>Enter a comment</h2>
+        <label htmlFor="inComment">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter a comment"
+            value={this.state.comment}
+            onChange={this.onChange.bind(this)}
+            onKeyPress={this.onKey.bind(this)}
+          />
+        </label>
+        <h3>Comments</h3>
+        <div className="">{this.renderComments()}</div>
       </div>
     );
   }
 }
 
 CommentContainer.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired
+  ranking: PropTypes.object.isRequired
 };
 
-export default withTracker(() => {
-  const handle = Meteor.subscribe("comments");
-  return {
-    comments: Comments.find({}).fetch(),
-    user: Meteor.user(),
-    ready: handle.ready()
-  };
-})(CommentContainer);
+// export default withTracker(() => {
+//   const handle = Meteor.subscribe("comments");
+//   return {
+//     comments: Comments.find().fetch(),
+//     user: Meteor.user(),
+//     ready: handle.ready()
+//   };
+// })(CommentContainer);
+
+export default CommentContainer;

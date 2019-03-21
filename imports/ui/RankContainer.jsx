@@ -16,7 +16,7 @@ class RankContainer extends Component {
   //render a rank container and add the top ten lists, based on each ranking avalible in the database,
   render() {
     return (
-      <div className="row">
+      <div className="row d-flex justify-content-center">
         {this.props.rankings.map((ranking, ind) => (
           <TopTenList key={ind++} ranking={ranking} />
         ))}
