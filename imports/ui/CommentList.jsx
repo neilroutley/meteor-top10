@@ -20,8 +20,10 @@ class CommentList extends Component {
 
   compare(arr1, arr2) {
     if (!arr1 || !arr2) return;
-
-    let result;
+    // if (arr1.length === 0 && arr2.length === 0) {
+    //   return true;
+    // }
+    let result = true;
 
     arr1.forEach(e1 =>
       arr2.forEach(e2 => {

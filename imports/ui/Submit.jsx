@@ -8,7 +8,7 @@ class Submit extends Component {
     this.title = "";
     this.list = {};
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state ={
+    this.state = {
       redirectToHome: false
     };
   }
@@ -28,8 +28,10 @@ class Submit extends Component {
 
   //converts list to the correct list
   convertList() {
+    let stringTitle =
+      this.title.value.charAt(0).toUpperCase() + this.title.value.slice(1);
     return {
-      title: this.title.value,
+      title: stringTitle,
       list: [
         { content: this.list.item1.value, order: 0 },
         { content: this.list.item2.value, order: 1 },
@@ -100,7 +102,6 @@ class Submit extends Component {
               ref={input => (this.title = input)}
               className="form-control"
               id="titleInput"
-              placeholder="title"
             />
           </div>
           <div className="form-group">

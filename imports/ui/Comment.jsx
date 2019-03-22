@@ -23,9 +23,7 @@ class Comment extends Component {
 
         <div className="media-body p-2 shadow-sm rounded bg-light border">
           <div>
-            <h6 className="mt-0 mb-1 text-muted">
-              {this.state.owner}
-            </h6>
+            <h6 className="mt-0 mb-1 text-muted">{this.state.owner}</h6>
           </div>
           <div>{this.state.body}</div>
         </div>

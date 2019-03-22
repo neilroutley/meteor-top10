@@ -21,10 +21,11 @@ class CommentSection extends Component {
       });
     }
   }
+
   compare(arr1, arr2) {
     if (!arr1 || !arr2) return;
 
-    let result;
+    let result = true;
 
     arr1.forEach(e1 =>
       arr2.forEach(e2 => {
