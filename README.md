@@ -8,7 +8,7 @@ The objective of this CS5610 project 3 is to create a web application where you 
 
 ## Preview
 
-<!-- ![image](./rankTenDemo.gif) -->
+![image](./demo/rankKingDemo.gif)
 
 ## Tech
 
