@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import MainTemplate from "./MainTemplate.jsx";
 import Submit from "./Submit.jsx";
 import RankContainer from "./RankContainer.jsx";
+import AboutPage from "./AboutPage.jsx";
 
 import { withTracker } from "meteor/react-meteor-data";
 
@@ -28,8 +29,7 @@ const CreateComponent = () => {
 
 const AboutComponent = () => (
   <div className="container text-center">
-    <h2>About</h2>
-    <div>I am the Rank King</div>
+    <AboutPage />
   </div>
 );
 
