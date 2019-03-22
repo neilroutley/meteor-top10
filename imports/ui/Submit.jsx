@@ -90,6 +90,7 @@ class Submit extends Component {
     }
     return (
       <div className="container">
+        <h1 className="p-2">Create Ranking</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="nameImput">Title:</label>

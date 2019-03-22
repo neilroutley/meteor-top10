@@ -150,7 +150,9 @@ class TopTenList extends Component {
     return (
       <div className="topTenContainer m-1" key={this.state.title}>
         <div>
-          <h1>{this.state.title}</h1>
+          <div className="bg-light border rounded">
+            <h1>{this.state.title}</h1>
+          </div>
           <DragDropContext onDragEnd={this.onDragEnd}>
             <Droppable droppableId="droppable">
               {(provided, snapshot) => (
@@ -192,7 +194,10 @@ class TopTenList extends Component {
               )}
             </Droppable>
           </DragDropContext>
-          <button onClick={this.onSubmit} className="btn btn-primary w-100 mt-2 mb-4">
+          <button
+            onClick={this.onSubmit}
+            className="btn btn-primary w-100 mt-2 mb-4"
+          >
             Rank
           </button>
           <CommentSection _id={this.state._id} comments={this.state.comments} />

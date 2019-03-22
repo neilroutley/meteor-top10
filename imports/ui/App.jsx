@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const HomeComponent = () => {
   return (
     <div className="container text-center">
-      <h1>Top 10</h1>
       {Meteor.user() ? <RankContainer /> : <p>Please log in</p>}
     </div>
   );
@@ -20,8 +19,7 @@ const HomeComponent = () => {
 const CreateComponent = () => {
   return (
     <div className="container col-md-8 col-lg-6">
-      <h1>Create Ranking</h1>
-      <div className="">
+      <div className=" container text-center">
         {Meteor.user() ? <Submit /> : <p>Please log in</p>}
       </div>
     </div>

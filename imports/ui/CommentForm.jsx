@@ -77,7 +77,7 @@ class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form method="post" onSubmit={this.onSubmit} className="m-1 mt-4 mb-3 pb-2 border-bottom">
+        <form method="post" onSubmit={this.onSubmit} className="p-3 mb-3 border-bottom bg-light rounded">
           <div className="form-group">
             <input
               className="form-control"

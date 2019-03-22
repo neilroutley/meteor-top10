@@ -8,7 +8,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <div className="">
-        <nav className="navbar navbar-expand-md navbar-dark primary-color">
+        <nav className="navbar navbar-expand-md navbar-light">
           <div className="container">
             <NavLink className="navbar-brand" to="/">
               Rank King
@@ -60,7 +60,7 @@ export default class NavBar extends Component {
                 </li>
               </ul>
               <div className="md-form my-0">
-                <AccountsUIWrapper />
+                <AccountsUIWrapper />;
               </div>
             </div>
           </div>
