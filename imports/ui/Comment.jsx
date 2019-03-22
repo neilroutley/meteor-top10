@@ -12,7 +12,7 @@ class Comment extends Component {
   }
   render() {
     return (
-      <div className="media mb-3 p-2">
+      <div className="media mb-2 ml-2 text-left">
         <img
           className="mr-3 bg-light rounded"
           width="48"
@@ -22,11 +22,12 @@ class Comment extends Component {
         />
 
         <div className="media-body p-2 shadow-sm rounded bg-light border">
-          {/*<small className="float-right text-muted">{createdAt}</small>*/}
-          <h6 className="mt-0 mb-1 text-muted float-left">
-            {this.state.owner}
-          </h6>
-          {this.state.body}
+          <div>
+            <h6 className="mt-0 mb-1 text-muted">
+              {this.state.owner}
+            </h6>
+          </div>
+          <div>{this.state.body}</div>
         </div>
       </div>
     );

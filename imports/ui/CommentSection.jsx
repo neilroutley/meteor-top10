@@ -43,7 +43,7 @@ class CommentSection extends Component {
 
   render() {
     return (
-      <div className="commentBlock">
+      <div className="commentBlock border-top rounded">
         <CommentForm _id={this.state._id} />
         <CommentList comments={this.state.comments} />
       </div>

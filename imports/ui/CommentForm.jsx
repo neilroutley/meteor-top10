@@ -17,24 +17,8 @@ class CommentForm extends Component {
     };
 
     // bind context to methods
-    //this.handleFieldChange = this.handleFieldChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
-  // /**
-  //  * Handle form input field changes & update the state
-  //  */
-  // // handleFieldChange = event => {
-  // //   const { value, owner } = event.target;
-  // //
-  // //   this.setState({
-  // //     ...this.state,
-  // //     comment: {
-  // //       ...this.state.comment,
-  // //       [owner]: value
-  // //     }
-  // //   });
-  // // };
 
   /**
    * Form submit handler
@@ -52,6 +36,7 @@ class CommentForm extends Component {
 
     // loading status and clear error
     this.setState({ error: "", loading: true });
+
     //servercomment
     let serverComment = {
       owner: Meteor.user().username,
@@ -70,19 +55,17 @@ class CommentForm extends Component {
         }
 
         console.log("Comment inserted", res);
-        this.setState({
-          comment: ""
-        });
+        this.body.value = "";
       }
     );
-    this.setState({ error: "", loading: false });
+    this.setState({ error: "", loading: false});
   }
 
   /**
    * Simple validation
    */
   isFormValid() {
-    return Meteor.user().username !== "" && this.body !== "";
+    return Meteor.user().username !== "" && this.body.value !== "";
   }
 
   renderError() {
@@ -94,8 +77,8 @@ class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form method="post" onSubmit={this.onSubmit}>
-          <div className="form-group p-2">
+        <form method="post" onSubmit={this.onSubmit} className="m-1 mt-4 mb-3 pb-2 border-bottom">
+          <div className="form-group">
             <input
               className="form-control"
               placeholder="🤬 Your Comment"
@@ -108,7 +91,7 @@ class CommentForm extends Component {
           {this.renderError()}
 
           <div className="form-group">
-            <button disabled={this.state.loading} className="btn btn-primary">
+            <button disabled={this.state.loading} className="btn btn-sm btn-outline-primary">
               Comment &#10148;
             </button>
           </div>

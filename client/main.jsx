@@ -5,5 +5,5 @@ import App from "/imports/ui/App";
 import "../imports/startup/accounts-config.js";
 
 Meteor.startup(() => {
-	render(<App />, document.getElementById("react-target"));
+  render(<App />, document.getElementById("react-target"));
 });

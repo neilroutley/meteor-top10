@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 
 class Submit extends Component {
@@ -7,6 +8,9 @@ class Submit extends Component {
     this.title = "";
     this.list = {};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state ={
+      redirectToHome: false
+    };
   }
 
   //checks the list for duplicates
@@ -76,10 +80,14 @@ class Submit extends Component {
       }
 
       console.log("ranking updated", res);
+      this.setState({ redirectToReferrer: true });
     });
   }
 
   render() {
+    if (this.state.redirectToReferrer) {
+      return <Redirect to={"/"} />;
+    }
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>

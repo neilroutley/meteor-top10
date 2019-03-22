@@ -11,8 +11,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
   padding: 0,
   margin: 0,
-  // padding: grid * 2,
-  // margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
   background: isDragging ? "lightgreen" : "grey",
@@ -150,53 +148,55 @@ class TopTenList extends Component {
 
   render() {
     return (
-      <div className="" key={this.state.title}>
-        <h1>{this.state.title}</h1>
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <div
-                className="media-body p-2 shadow-sm rounded bg-white border"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
-              >
-                {this.state.list.map((item, index) => (
-                  <Draggable
-                    key={item.content}
-                    draggableId={item.content}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        className="media-body p-2 shadow-sm rounded bg-light border"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        <div className="col-2 d-inline-block border p-0 bg-white">
-                          {(item.order = index)}
+      <div className="topTenContainer m-1" key={this.state.title}>
+        <div>
+          <h1>{this.state.title}</h1>
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided, snapshot) => (
+                <div
+                  className="media-body shadow-sm rounded bg-white border"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {this.state.list.map((item, index) => (
+                    <Draggable
+                      key={item.content}
+                      draggableId={item.content}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          className="media-body p-2 shadow-sm rounded bg-light border"
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                        >
+                          <div className="col-2 d-inline-block border p-0 bg-white">
+                            {(item.order = index)}
+                          </div>
+                          <div className="col-10 d-inline-block">
+                            {item.content}
+                          </div>
                         </div>
-                        <div className="col-10 d-inline-block">
-                          {item.content}
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}{" "}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <button onClick={this.onSubmit} className="btn btn-primary m-4">
-          Submit{" "}
-        </button>
-        <CommentSection _id={this.state._id} comments={this.state.comments} />
+                      )}
+                    </Draggable>
+                  ))}{" "}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <button onClick={this.onSubmit} className="btn btn-primary w-100 mt-2 mb-4">
+            Rank
+          </button>
+          <CommentSection _id={this.state._id} comments={this.state.comments} />
+        </div>
       </div>
     );
   }
