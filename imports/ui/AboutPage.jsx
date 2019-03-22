@@ -99,7 +99,7 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="container text-center">
-        <div className="topTenAboutContainer m-4" key={this.state.title}>
+        <div className="topTenAboutContainer m-4 pb-1" key={this.state.title}>
           <div>
             <div className="bg-light border rounded">
               <h1>{this.state.title}</h1>

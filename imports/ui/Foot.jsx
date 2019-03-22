@@ -17,6 +17,12 @@ class Foot extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
+                <li>
+                  <Link to="/create">Create</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
               </ul>
             </div>
             <div className="col-lg-4 col-sm-12">
