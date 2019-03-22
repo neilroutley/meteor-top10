@@ -29,7 +29,7 @@ $ meteor
 ## Links
 
 -   [Website](https://rankten.herokuapp.com/)
--   [Demo Video](https://www.youtube.com/)
+-   [Demo Video](https://www.youtube.com/watch?v=f_cHrXziUzo&feature=youtu.be)
 -   [Slides](https://docs.google.com/presentation/d/1FIyl5hDJr2BFKVWR2bKU2cvNU9EhH-yIltwPczKxBDU/edit?usp=sharing)
 -   [CS5610 Website](http://johnguerra.co/classes/webDevelopment_spring_2019/)
 
