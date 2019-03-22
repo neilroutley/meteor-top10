@@ -180,7 +180,7 @@ class TopTenList extends Component {
                           )}
                         >
                           <div className="col-2 d-inline-block border p-0 bg-white">
-                            {(item.order = index)}
+                            {(item.order = index + 1)}
                           </div>
                           <div className="col-10 d-inline-block">
                             {item.content}

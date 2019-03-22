@@ -91,103 +91,160 @@ class Submit extends Component {
       return <Redirect to={"/"} />;
     }
     return (
-      <div className="container">
-        <h1 className="p-2">Create Ranking</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="nameImput">Title:</label>
-            <input
-              type="text"
-              name="title"
-              ref={input => (this.title = input)}
-              className="form-control"
-              id="titleInput"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="item1Input">Item 1:</label>
-            <input
-              name="item1"
-              type="text"
-              ref={input => (this.list.item1 = input)}
-              className="form-control"
-              id="item1Input"
-            />
-            <label htmlFor="item2Input">Item 2:</label>
-            <input
-              name="item2"
-              type="text"
-              ref={input => (this.list.item2 = input)}
-              className="form-control"
-              id="item2Input"
-            />
-            <label htmlFor="item3Input">Item 3:</label>
-            <input
-              name="item3"
-              type="text"
-              ref={input => (this.list.item3 = input)}
-              className="form-control"
-              id="item3Input"
-            />
-            <label htmlFor="item4Input">Item 4:</label>
-            <input
-              name="item4"
-              type="text"
-              ref={input => (this.list.item4 = input)}
-              className="form-control"
-              id="item4Input"
-            />
-            <label htmlFor="item5Input">Item 5:</label>
-            <input
-              name="item5"
-              type="text"
-              ref={input => (this.list.item5 = input)}
-              className="form-control"
-              id="item5Input"
-            />
-            <label htmlFor="item6Input">Item 6:</label>
-            <input
-              name="item6"
-              type="text"
-              ref={input => (this.list.item6 = input)}
-              className="form-control"
-              id="item6Input"
-            />
-            <label htmlFor="item7Input">Item 7:</label>
-            <input
-              name="item7"
-              type="text"
-              ref={input => (this.list.item7 = input)}
-              className="form-control"
-              id="item7Input"
-            />
-            <label htmlFor="item8Input">Item 8:</label>
-            <input
-              name="item8"
-              type="text"
-              ref={input => (this.list.item8 = input)}
-              className="form-control"
-              id="item8Input"
-            />
-            <label htmlFor="item9Input">Item 9:</label>
-            <input
-              name="item9"
-              type="text"
-              ref={input => (this.list.item9 = input)}
-              className="form-control"
-              id="item9Input"
-            />
-            <label htmlFor="item10Input">Item 10:</label>
-            <input
-              name="item10"
-              type="text"
-              ref={input => (this.list.item10 = input)}
-              className="form-control"
-              id="item10Input"
-            />
-          </div>
-          <input type="submit" value="Submit" className="btn btn-primary" />
-        </form>
+      <div className="primary-color rounded border">
+        <div className="bg-light border rounded">
+          <h1 className="">Create Ranking</h1>
+        </div>
+
+        <div className="p-4 text-right">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="nameImput">
+                Title:
+              </label>
+              <input
+                type="text"
+                name="title"
+                ref={input => (this.title = input)}
+                className="col mr-3"
+                id="titleInput"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item1Input">
+                Item 1:
+              </label>
+              <input
+                name="item1"
+                type="text"
+                ref={input => (this.list.item1 = input)}
+                className="form-control col mr-3"
+                id="item1Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item2Input">
+                Item 2:
+              </label>
+              <input
+                name="item2"
+                type="text"
+                ref={input => (this.list.item2 = input)}
+                className="form-control col mr-3"
+                id="item2Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item3Input">
+                Item 3:
+              </label>
+              <input
+                name="item3"
+                type="text"
+                ref={input => (this.list.item3 = input)}
+                className="form-control col mr-3"
+                id="item3Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item4Input">
+                Item 4:
+              </label>
+              <input
+                name="item4"
+                type="text"
+                ref={input => (this.list.item4 = input)}
+                className="form-control col mr-3"
+                id="item4Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item5Input">
+                Item 5:
+              </label>
+              <input
+                name="item5"
+                type="text"
+                ref={input => (this.list.item5 = input)}
+                className="form-control col mr-3"
+                id="item5Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item6Input">
+                Item 6:
+              </label>
+              <input
+                name="item6"
+                type="text"
+                ref={input => (this.list.item6 = input)}
+                className="form-control col mr-3"
+                id="item6Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item7Input">
+                Item 7:
+              </label>
+              <input
+                name="item7"
+                type="text"
+                ref={input => (this.list.item7 = input)}
+                className="form-control col mr-3"
+                id="item7Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item8Input">
+                Item 8:
+              </label>
+              <input
+                name="item8"
+                type="text"
+                ref={input => (this.list.item8 = input)}
+                className="form-control col mr-3"
+                id="item8Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item9Input">
+                Item 9:
+              </label>
+              <input
+                name="item9"
+                type="text"
+                ref={input => (this.list.item9 = input)}
+                className="form-control col mr-3"
+                id="item9Input"
+              />
+            </div>
+
+            <div className="form-group row">
+              <label className="col-xl-2 col-sm-3 col-4" htmlFor="item10Input">
+                Item 10:
+              </label>
+              <input
+                name="item10"
+                type="text"
+                ref={input => (this.list.item10 = input)}
+                className="form-control col mr-3"
+                id="item10Input"
+              />
+            </div>
+            <div className="text-center">
+              <input type="submit" value="Submit" className="btn btn-primary" />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
